@@ -10,13 +10,14 @@ html {
   @include mat.theme(
     (
       color: (
-        primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
+        primary: mat.$cyan-palette,
+        tertiary: mat.$orange-palette,
       ),
-      typography: Roboto,
+      typography: Montserrat,
       density: 0,
     )
   );
+  --mat-sys-label-large-weight: 700;
 }
 
 body {
