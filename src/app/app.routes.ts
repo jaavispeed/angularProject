@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
+import { notAuthenticatedGuard } from './auth/guards/not-authenticated.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
   {
-    path: '',
+    path: 'auth',
+    canMatch: [notAuthenticatedGuard],
     loadChildren: () => import('@app/auth/auth.routes').then((m) => m.authRoutes),
   },
   {
