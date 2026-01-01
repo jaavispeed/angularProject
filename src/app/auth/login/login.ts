@@ -4,8 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBar } from '@angular/material/progress-bar';
 import { Router } from '@angular/router';
 import { LoginFormService } from '@app/auth/login/login-form-service';
+import { finalize, tap } from 'rxjs';
 import { AuthService } from '../services/auth-service';
 
 @Component({
@@ -17,6 +19,7 @@ import { AuthService } from '../services/auth-service';
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
+    MatProgressBar,
   ],
   providers: [LoginFormService],
   templateUrl: './login.html',
@@ -39,11 +42,16 @@ export default class Login {
 
     const { email, password } = this.form.value;
 
-    this.authService.postLogin(email!, password!).subscribe((isAuthenticated) => {
-      if (isAuthenticated) {
-        this.router.navigateByUrl('/core');
-        return;
-      }
-    });
+    this.authService
+      .postLogin(email!, password!)
+      .pipe(
+        tap((isAuthenticated) => {
+          if (isAuthenticated) {
+            this.router.navigateByUrl('/core');
+          }
+        }),
+        finalize(() => this.cargando.set(false))
+      )
+      .subscribe();
   }
 }

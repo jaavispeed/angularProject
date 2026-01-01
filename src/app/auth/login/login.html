@@ -26,7 +26,11 @@
         }
       </mat-form-field>
 
-      <button matButton="elevated" class="w-full font-bold" [disabled]="form.invalid">
+      @if(cargando()){
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      }
+
+      <button matButton="elevated" class="w-full" [disabled]="form.invalid || cargando()">
         Entrar
       </button>
     </form>
