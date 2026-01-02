@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoginFormService } from '@app/auth/login/login-form-service';
 import { finalize, tap } from 'rxjs';
 import { AuthService } from '../services/auth-service';
@@ -20,6 +20,7 @@ import { AuthService } from '../services/auth-service';
     MatCardModule,
     MatButtonModule,
     MatProgressBar,
+    RouterLink,
   ],
   providers: [LoginFormService],
   templateUrl: './login.html',
