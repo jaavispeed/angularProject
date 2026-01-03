@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/auth/services/auth-service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatButtonModule],
+  imports: [],
   templateUrl: './dashboard.html',
 })
 export default class Dashboard {

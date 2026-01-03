@@ -1,50 +1,28 @@
-<div class="flex justify-center items-center min-h-screen">
-  <mat-card class="w-full max-w-md p-8">
-    <div class="mb-6">
-      <h1 class="text-2xl font-semibold text-primary">PulseTrain</h1>
-      <p class="text-sm text-gray-500">Accede a tu cuenta</p>
-    </div>
+<form [formGroup]="form" (ngSubmit)="ingresar()">
+  <div class="min-h-screen flex items-center justify-center" autocomplete="off">
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 shadow-xl">
+      <legend class="fieldset-legend text-sm">Login</legend>
 
-    <form [formGroup]="form" (ngSubmit)="ingresar()" class="gap-4 flex flex-col">
-      <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput placeholder="Ejemplo@gmail.com" formControlName="email" />
-
-        @if (form.get('email')?.hasError('required')) {
-        <mat-error>El email es <strong>obligatorio.</strong></mat-error>
-        } @if(form.get('email')?.hasError('email')) {
-        <mat-error>Ingresa un email <strong>válido.</strong></mat-error>
-        }
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Contraseña</mat-label>
-        <input type="password" matInput formControlName="password" />
-
-        @if (form.get('password')?.hasError('required')) {
-        <mat-error>La contraseña es <strong>obligatoria.</strong></mat-error>
-        }
-      </mat-form-field>
-
-      @if(cargando()){
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <label class="label font-semibold">Correo Electrónico</label>
+      <input type="email" class="input" placeholder="Correo Electrónico" formControlName="email" />
+      @if (form.get('email')?.touched && form.get('email')?.hasError('required')) {
+      <p class="label text-error font-semibold">Este campo es obligatorio</p>
       }
 
-      <div class="flex flex-col gap-2">
-        <button matButton="elevated" class="w-full" [disabled]="form.invalid || cargando()">
-          Entrar
-        </button>
+      <label class="label font-semibold">Contraseña</label>
+      <input type="password" class="input" placeholder="Contraseña" formControlName="password" />
+      @if (form.get('password')?.touched && form.get('password')?.hasError('required')) {
+      <p class="label text-error font-semibold">Este campo es obligatorio</p>
+      }
 
-        <p class="text-sm text-gray-500">
-          ¿No tienes cuenta?
-          <a
-            routerLink="/auth/register"
-            class="font-semibold text-primary hover:underline transition"
-          >
-            Regístrate
-          </a>
-        </p>
-      </div>
-    </form>
-  </mat-card>
-</div>
+      <button
+        class="btn btn-primary mt-4"
+        type="submit"
+        [disabled]="form.invalid"
+        routerLink="/core"
+      >
+        Ingresar
+      </button>
+    </fieldset>
+  </div>
+</form>
