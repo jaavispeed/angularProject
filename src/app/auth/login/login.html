@@ -13,6 +13,8 @@
       <input type="password" class="input" placeholder="Contraseña" formControlName="password" />
       @if (form.get('password')?.touched && form.get('password')?.hasError('required')) {
       <p class="label text-error font-semibold">Este campo es obligatorio</p>
+      } @if(cargando()){
+      <progress class="progress progress-accent" max="100"></progress>
       }
 
       <button
