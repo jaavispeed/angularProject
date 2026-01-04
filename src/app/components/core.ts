@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Sidebar } from '@app/shared/sidebar/sidebar';
 
 @Component({
   selector: 'app-core',
-  imports: [RouterOutlet],
+  imports: [Sidebar],
   templateUrl: './core.html',
 })
 export default class Core {}
