@@ -23,7 +23,7 @@
       <button
         class="btn btn-primary mt-4"
         type="submit"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || cargando()"
         routerLink="/core"
       >
         Ingresar
