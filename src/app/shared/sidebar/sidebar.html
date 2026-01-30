@@ -21,13 +21,24 @@
       <div class="divider my-0"></div>
 
       <ul class="menu flex w-full">
-        <li><a routerLink="/core">Dashboard</a></li>
+        @for (menu of menuItems; track menu.routerLink) {
+          <li>
+            <a [routerLink]="menu.routerLink">
+              @if (menu.icon) {
+                <i [class]="menu.icon + ' mr-2'"></i>
+              }
+              {{ menu.nombre }}
+            </a>
+          </li>
+        }
       </ul>
 
       <div class="mt-auto">
         <div class="divider"></div>
 
-        <button class="btn btn-error w-full" (click)="logout()">Cerrar sesión</button>
+        <button class="btn btn-error w-full" (click)="logout()">
+          <i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión
+        </button>
       </div>
     </aside>
   </div>
