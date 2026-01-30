@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginFormService } from '@app/auth/login/login-form-service';
 import { finalize, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../services/auth-service';
 
 @Component({
@@ -17,6 +18,8 @@ export default class Login {
   private router = inject(Router);
 
   form = this.loginForm.inicializarForm();
+
+  cliente = environment.clientName;
 
   cargando = signal(false);
 
@@ -37,7 +40,7 @@ export default class Login {
             this.router.navigateByUrl('/core');
           }
         }),
-        finalize(() => this.cargando.set(false))
+        finalize(() => this.cargando.set(false)),
       )
       .subscribe();
   }

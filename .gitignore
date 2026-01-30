@@ -41,3 +41,32 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment variables (archivos con configuración sensible)
+.env
+.env.local
+.env.*.local
+
+# Archivos de logs
+*.log
+logs/
+
+# Archivos temporales del SO
+*.tmp
+*.temp
+*~
+.~*
+
+# Dependencias opcionales
+package-lock.json
+yarn.lock
+
+# Archivos compilados de TypeScript
+*.js
+!*.config.js
+*.d.ts
+
+# Editor temporal files
+*.swp
+*.swo
+.DS_Store
